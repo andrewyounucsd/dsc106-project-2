@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Project 2 Report</title>
+        <style>
+            :root {
+                --color-neutral-95: hsl(220 10% 95%);
+                --color-neutral-90: hsl(220 10% 90%);
+                --color-neutral-80: hsl(220 10% 80%);
+                --color-neutral-70: hsl(220 10% 70%);
+                --color-neutral-60: hsl(220 10% 60%);
+                --color-neutral-50: hsl(220 10% 50%);
+                --color-neutral-40: hsl(220 10% 40%);
+                --color-neutral-30: hsl(220 10% 30%);
+                --color-neutral-20: hsl(220 10% 20%);
+                --color-neutral-10: hsl(220 10% 10%);
+            }
+
+            html {
+                font: 100%/1.5 system-ui;
+                counter-reset: figure;
+                background: var(--color-neutral-95);
+                max-width: min(75vw, 80em);
+                margin: 0 auto;
+            }
+
+            h1, h2, h3, h4, h5, h6 {
+                line-height: 1.1;
+                font-weight: 600;
+                text-wrap: balance;
+            }
+
+            h1, h2 {
+                border-bottom: 1px solid var(--color-neutral-80);
+                padding-bottom: 0.2em;
+            }
+
+            h1 {
+                margin-block: 1em 0.5rem;
+                font-size: clamp(2.5em, 150% + 2vh + 2vw, 10vmin);
+                font-weight: 800;
+            }
+
+            h1 small {
+                display: block;
+                width: fit-content;
+                padding: 0.2em 0.5em;
+                margin-inline: auto;
+                color: white;
+                background: var(--color-neutral-40);
+                font-size: 40%;
+                text-transform: uppercase;
+                white-space: nowrap;
+            }
+
+            h2 {
+                font-size: 180%;
+                color: var(--color-neutral-30);
+            }
+
+            h3 {
+                font-size: 130%;
+            }
+
+            ul, ol {
+                padding-inline-start: 2em;
+            }
+
+            li + li {
+                margin-top: 0.2em;
+            }
+
+            header {
+                padding-block: 1em;
+                text-align: center;
+            }
+
+            main {
+                background: white;
+                color: var(--color-neutral-20);
+                border-radius: 1rem;
+                padding: 0.1rem 2rem;
+            }
+
+            figure {
+                margin: 1em 0;
+                padding: 0.5rem;
+                margin-inline: -0.5em;
+                border: 1px solid var(--color-neutral-80);
+                box-shadow: 0 0.1em 0.2em var(--color-neutral-95);
+                text-align: center;
+                background: white;
+            }
+
+            figure img {
+                max-width: 100%;
+                height: auto;
+            }
+
+            figure > figcaption {
+                font: 500 75% var(--font-sans);
+                background: var(--color-neutral-95);
+                padding: 0.5rem;
+                margin: -0.5rem;
+                margin-top: 0.5rem;
+                counter-increment: figure;
+                text-align: left;
+            }
+
+            figure > figcaption::before {
+                content: "Figure " counter(figure) ": ";
+                font-weight: bold;
+                color: var(--color-neutral-40);
+            }
+
+            .score {
+                display: inline-block;
+                font-weight: bold;
+                padding: 0.1em 0.4em;
+                border-radius: 4px;
+                font-size: 90%;
+            }
+
+            .earnest   { background: #d4edda; color: #155724; }
+            .neutral   { background: #fff3cd; color: #856404; }
+            .deceptive { background: #f8d7da; color: #721c24; }
+        </style>
+    </head>
+
+    <body>
+        <header>
+            <h1>
+                <small>Project 2</small>
+                Persuasive or Deceptive Visualization?
+            </h1>
+            <p><strong>Your Name</strong> — <em>your@ucsd.edu</em></p>
+        </header>
+
+        <main>
+
+            <h2>Proposition: Black New Yorkers are disproportionately targeted by NYPD misconduct and are forced to file complaints at rates far exceeding their share of the city's population.</h2>
+
+            <!-- ═══════════════════════════════════════════════════ FOR -->
+            <section>
+                <h3>FOR the Proposition</h3>
+
+                <figure>
+                    <img src="proproposition.png"
+                         alt="Grouped bar chart comparing share of NYPD complaints (2000–2019) to NYC population share by race. Black residents account for 53.8% of complaints but only 23% of the population." />
+                    <figcaption>
+                        Black New Yorkers filed 54% of all NYPD misconduct complaints between 2000 and 2019,
+                        despite comprising only 23% of New York City's population more than double their
+                        population share. White New Yorkers, by contrast, filed just 8.8% of complaints
+                        while making up 33% of the population.
+                        <a href="https://www.nytimes.com/2011/07/29/nyregion/census-finds-slight-stabilizing-in-new-york-city-racial-makeup.html"
+                           target="_blank">The New York Times (July 29, 2011)</a>.
+                    </figcaption>
+                </figure>
+
+                <p>Design Decisions and Rationale:</p>
+
+                <ul>
+                    <li>
+                        <span class="score earnest">Score: 1.5</span>
+                        <strong>Filtering the years 2000-2019</strong>
+                        Limiting the data to 2000–2019 removes the sparse early years
+                        (1985–1999) where complaint recording was inconsistent and incomplete.
+                        The year 2020 only had 4 records so there was no need to include it.
+                        This makes the comparison cleaner and more defensible. The tradeoff is that
+                        it could be seen as cherry-picking, but the date range is well justified by
+                        data quality rather than by what numbers it produces.
+                    </li>
+                    <li>
+                        <span class="score earnest">Score: 2</span>
+                        <strong>Side by side grouped bars</strong>
+                        Placing complaint percentage and population percentage directly next to
+                        each other for each racial group makes the disproportion immediately readable
+                         without any manipulation. The gap between Black complaint share (53.8%) and 
+                         population share (23%) is visually undeniable. We considered a pie chart or 
+                         stacked bar but landed on grouped bars because they allow direct comparison, which 
+                         is the whole point of the chart.
+                    </li>
+                    <li>
+                        <span class="score earnest">Score: 2</span>
+                        <strong>Y-axis starting at 0</strong>
+                        The axis runs from 0% to 65%, giving an honest baseline. This was a 
+                        deliberate choice given that there was no reason to truncate since the data 
+                        is compelling enough on its own.
+                    </li>
+                    <li>
+                        <span class="score earnest">Score: +1</span>
+                        <strong>Title framing</strong>
+                        The title interprets the chart, using the word "despite" to frame the 
+                        disproportion as something that demands explanation. This is persuasive 
+                        but not dishonest since the numbers in the chart back it up exactly. We considered 
+                        a more neutral title like "Complaint share vs. population share by race" but that 
+                        would have weakened. The slight deduction is because "just 23%" editorializes a little, 
+                        as a fully neutral title wouldn't use the word "just”.
+                    </li>
+                </ul>
+            </section>
+
+            <!-- ══════════════════════════════════════════════ AGAINST -->
+            <section>
+                <h3>AGAINST the Proposition</h3>
+
+                <figure>
+                    <img src="notproproposition.png"
+                         alt="Horizontal dual-axis bar chart showing the top 10 most reported allegations by Black complainants alongside their substantiation rates. Physical force is the most common allegation with 3,790 complaints but has the lowest substantiation rate at 13.3%. Frisk and Stop have the highest substantiation rates at 54.5% and 52.3% respectively despite lower complaint volumes." />
+                    <figcaption>
+                        Physical force is the most common allegation filed by Black New Yorkers,
+                        accounting for 3,790 complaints, yet it carries the lowest substantiation
+                        rate of any allegation type at just 13.3%. This suggests that despite high
+                        complaint volumes, the most serious allegations are the least likely to be
+                        confirmed by the review board, undermining the claim of systematic targeting.
+                    </figcaption>
+                </figure>
+
+                <p>Design Decisions and Rationale:</p>
+
+                <ul>
+                    <li>
+                        <span class="score deceptive">Score: −1.5</span>
+                        <strong>Dual Axis for Number of Complaints and Substantiation rates</strong>
+                        Earlier, we had two side by side bar charts for 
+                        number of complaints and substantiation rates, but we 
+                        felt that combining them would emphasize how some allegations 
+                        had high counts, but lower substantiation rates (Physical force in 
+                        particular). We put these graphs together by using two axis. However, 
+                        it is deceptive since these two axis aren’t very comparable, the bar 
+                        for number of complaints being longer than the bar for substantiation 
+                        rates doesn’t really mean anything but the axis makes you infer a meaningful difference.
+                    </li>
+                    <li>
+                        <span class="score deceptive">Score: 0.5</span>
+                        <strong>Taking the top 20 most reported allegations</strong>
+                        We took the most common complaints to push the idea that many 
+                        of complaints are unsubstantiated. For such a visualization it 
+                        makes sense to do an ordering by number of complaints, but it does 
+                        serve the narrative of the visualization and doesn’t give the full 
+                        context of all the allegations.
+                    </li>
+                    <li>
+                        <span class="score deceptive">Score 1.5</span>
+                        <strong>Filtering only Black complainants</strong>
+                        Since our proposition is on black citizens in NYC, it makes 
+                        sense to focus on that in our visualization. Though, it also 
+                        causes a lack of context for if it is normal for the allegation 
+                        with the highest occurrences to have lower substantiation rates 
+                        across all ethnicities. We did decide to use only black complainants 
+                        since it would not be addressing our proposition otherwise.
+                    </li>
+                    <li>
+                        <span class="score deceptive">Score: −1</span>
+                        <strong>Use of Raw Complaint counts</strong>
+                        Using Raw complaint counts emphasizes that a few allegations are made 
+                        the most, like physical force, but also have low substantiation rates. 
+                        If we had used the percentage of complaints for these, the bars would not 
+                        vary as much, since the complaints are actually well spread out. We wanted 
+                        there to be variance in the bar lengths so we went with raw counts.
+                    </li>
+                </ul>
+            </section>
+
+            <!-- ══════════════════════════════════════════════ REFLECTION -->
+            <section>
+                <h2>Final Reflection</h2>
+
+                <p>
+                    
+                </p>
+
+                <p>
+                    
+                </p>
+
+                <p>
+                    
+                </p>
+            </section>
+
+        </main>
+
+        <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516"
+            integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg=="
+            data-cf-beacon='{"version":"2024.11.0","token":"c822b88e119346678db149ed7b7721c9","r":1}'
+            crossorigin="anonymous"></script>
+    </body>
+</html>
